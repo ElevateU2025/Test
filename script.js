@@ -50,13 +50,15 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // FAQ Accordion Functionality
-  document.addEventListener('DOMContentLoaded', function() {
+ document.addEventListener('DOMContentLoaded', function() {
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
 
-        question.addEventListener('click', function() {
+        const toggleFAQ = (event) => {
+            event.preventDefault();  // Prevent unwanted default behavior
+
             const isActive = item.classList.contains('active');
             
             // Close all FAQ items
@@ -74,7 +76,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Expand answer smoothly
                 answer.style.maxHeight = answer.scrollHeight + 'px';
             }
-        });
+        };
+
+        question.addEventListener('click', toggleFAQ);
+        question.addEventListener('touchstart', toggleFAQ);
     });
 });
     
