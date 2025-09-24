@@ -1357,7 +1357,7 @@ section {
 .community-benefits p {
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-8);
-  color: var(--elevate-text-primary);
+  color: var(--elevate-white);
 }
 
 /* FAQ Section */
