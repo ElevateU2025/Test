@@ -50,26 +50,33 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // FAQ Accordion Functionality
+  document.addEventListener('DOMContentLoaded', function() {
     const faqItems = document.querySelectorAll('.faq-item');
-    
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
-        
+        const answer = item.querySelector('.faq-answer');
+
         question.addEventListener('click', function() {
             const isActive = item.classList.contains('active');
             
             // Close all FAQ items
-            faqItems.forEach(faqItem => {
-                faqItem.classList.remove('active');
+            faqItems.forEach(faq => {
+                faq.classList.remove('active');
+                faq.querySelector('.faq-toggle').textContent = '+';
+                faq.querySelector('.faq-answer').style.maxHeight = null;
             });
-            
-            // If the clicked item wasn't active, open it
+
+            // Toggle current FAQ
             if (!isActive) {
                 item.classList.add('active');
+                // Change toggle icon
+                question.querySelector('.faq-toggle').textContent = '×';
+                // Expand answer smoothly
+                answer.style.maxHeight = answer.scrollHeight + 'px';
             }
         });
     });
-    
+});
     
     // Enhanced Navbar Background on Scroll
     const navbar = document.querySelector('.navbar');
