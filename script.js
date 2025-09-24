@@ -70,57 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Registration Button Click Handlers - Enhanced with premium effects
-    function handleRegistrationClick(event) {
-        // Add ripple effect
-        createRippleEffect(event.currentTarget, event);
-        
-        // Show premium registration alert
-        setTimeout(() => {
-            showPremiumAlert('🎓 ElevateU 2025 Registration', 
-                '✨ Registration opening soon!\n\n' +
-                '🚀 ElevateU 2025 registration will begin shortly.\n\n' +
-                '📧 Early registration: info@elevateu2025.com\n' +
-                '📱 Call us: +91 98765 43210\n\n' +
-                '🔥 Don\'t miss out - seats are LIMITED!\n' +
-                '⚡ BE READY when registration opens!'
-            );
-        }, 200);
-    }
     
-    // Add event listeners to all registration buttons
-    const registerBtns = document.querySelectorAll('.register-btn');
-    const competitionBtns = document.querySelectorAll('.competition-register-btn');
-    
-    registerBtns.forEach(btn => {
-        btn.addEventListener('click', handleRegistrationClick);{
-            window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSdoptzchosaQCKOthTS1lKWwfYxRaPc89FccHsA3w6NRMUn6A/viewform';
-    });
-    
-    competitionBtns.forEach(btn => {
-        btn.addEventListener('click', function(event) {
-            createRippleEffect(event.currentTarget, event);
-            
-            if(btn.textContent.includes('Global Gameplan')) {
-            window.location.href = ' https://elevateu2025.github.io/Global-Gameplan/'; // Replace with your competition 1 link
-        } else {
-            window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSfdvMQI-XeTuWm6HeSlq_b6AUc4uBzuvCI4xDBuHvGFDG41yw/viewform';  // Replace with your competition 2 link
-        }
-            
-            setTimeout(() => {
-                showPremiumAlert(`🏆 ${competitionName}`,
-                    `🎯 Thank you for your interest in ${competitionName}!\n\n` +
-                    '✅ Open to Class 11 & 12 students only\n' +
-                    '✅ Registration opens with main event\n' +
-                    '✅ Limited spots available\n\n' +
-                    '📧 More info: info@elevateu2025.com\n' +
-                    '📱 Call: +91 98765 43210\n\n' +
-                    '🔥 Get ready for an AMAZING experience!'
-                );
-            }, 200);
-        });
-    });
-       
     // Enhanced Navbar Background on Scroll
     const navbar = document.querySelector('.navbar');
     
