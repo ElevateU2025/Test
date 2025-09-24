@@ -93,15 +93,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const competitionBtns = document.querySelectorAll('.competition-register-btn');
     
     registerBtns.forEach(btn => {
-        btn.addEventListener('click', handleRegistrationClick);
+        btn.addEventListener('click', handleRegistrationClick);{
+            window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSdoptzchosaQCKOthTS1lKWwfYxRaPc89FccHsA3w6NRMUn6A/viewform';
     });
     
     competitionBtns.forEach(btn => {
         btn.addEventListener('click', function(event) {
             createRippleEffect(event.currentTarget, event);
             
-            const isGlobalGameplan = this.textContent.includes('Global Gameplan');
-            const competitionName = isGlobalGameplan ? 'Global Gameplan – Youth Delegates Challenge' : 'Fund a Future';
+            if(btn.textContent.includes('Global Gameplan')) {
+            window.location.href = ' https://elevateu2025.github.io/Global-Gameplan/'; // Replace with your competition 1 link
+        } else {
+            window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLSfdvMQI-XeTuWm6HeSlq_b6AUc4uBzuvCI4xDBuHvGFDG41yw/viewform';  // Replace with your competition 2 link
+        }
             
             setTimeout(() => {
                 showPremiumAlert(`🏆 ${competitionName}`,
@@ -116,46 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 200);
         });
     });
-    
-    // Contact Form Submission with enhanced feedback
-    const contactForm = document.querySelector('.contact-form form');
-    
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const name = this.querySelector('input[type="text"]').value;
-            const email = this.querySelector('input[type="email"]').value;
-            const message = this.querySelector('textarea').value;
-            
-            // Basic validation
-            if (!name.trim() || !email.trim() || !message.trim()) {
-                showNotification('Please fill in all fields.', 'error');
-                return;
-            }
-            
-            if (!isValidEmail(email)) {
-                showNotification('Please enter a valid email address.', 'error');
-                return;
-            }
-            
-            // Show loading state
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            // Simulate form submission
-            setTimeout(() => {
-                showNotification('🎉 Message sent successfully! We\'ll get back to you soon.', 'success');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
-        });
-    }
-    
+       
     // Enhanced Navbar Background on Scroll
     const navbar = document.querySelector('.navbar');
     
