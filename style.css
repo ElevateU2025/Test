@@ -1379,16 +1379,31 @@ section {
   box-shadow: var(--shadow-sm);
 }
 
-.faq-question {
-  padding: var(--space-20) var(--space-24);
+/* Hide native checkbox for CSS FAQ accordion */
+.faq-checkbox {
+  display: none;
+}
+
+.faq-checkbox ~ .faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--duration-normal) var(--ease-standard);
+}
+
+.faq-checkbox:checked ~ .faq-answer {
+  max-height: 500px; /* Enough height to reveal full answer */
+}
+
+.faq-checkbox + .faq-question {
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: var(--space-20) var(--space-24);
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
-.faq-question:hover {
+.faq-checkbox + .faq-question:hover {
   background: #f8fafc;
 }
 
@@ -1406,18 +1421,9 @@ section {
   transition: transform var(--duration-fast) var(--ease-standard);
 }
 
-.faq-item.active .faq-toggle {
+/* Rotate the toggle icon when checkbox is checked */
+.faq-checkbox:checked + .faq-question .faq-toggle {
   transform: rotate(45deg);
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height var(--duration-normal) var(--ease-standard);
-}
-
-.faq-item.active .faq-answer {
-  max-height: 200px;
 }
 
 .faq-answer p {
