@@ -50,34 +50,41 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // FAQ Accordion Functionality
- document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
     const faqItems = document.querySelectorAll('.faq-item');
+
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
 
+        let lastTouchTime = 0; // To prevent double toggle on touch devices
+
         const toggleFAQ = (event) => {
-            event.preventDefault();  // Prevent unwanted default behavior
+            if (event.type === 'touchstart') {
+                const now = Date.now();
+                if (now - lastTouchTime < 500) {
+                    // Ignore double touch
+                    event.preventDefault();
+                    return;
+                }
+                lastTouchTime = now;
+            }
+            event.preventDefault();
 
             const isActive = item.classList.contains('active');
-            
             // Close all FAQ items
             faqItems.forEach(faq => {
                 faq.classList.remove('active');
                 faq.querySelector('.faq-toggle').textContent = '+';
                 faq.querySelector('.faq-answer').style.maxHeight = null;
             });
-
             // Toggle current FAQ
             if (!isActive) {
                 item.classList.add('active');
-                // Change toggle icon
                 question.querySelector('.faq-toggle').textContent = '×';
-                // Expand answer smoothly
                 answer.style.maxHeight = answer.scrollHeight + 'px';
             }
         };
-
         question.addEventListener('click', toggleFAQ);
         question.addEventListener('touchstart', toggleFAQ);
     });
