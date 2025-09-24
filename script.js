@@ -25,9 +25,8 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
                 hamburger.classList.remove('active');
                 navMenu.classList.remove('active');
-            }
         });
-    }
+    });
     
     // Smooth Scrolling for Navigation Links
     navLinks.forEach(link => {
